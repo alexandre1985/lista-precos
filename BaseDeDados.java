@@ -202,5 +202,6 @@ public class BaseDeDados
         produtos.add(new Produto(0, "pao", 0.12f));
         produtos.add(new Produto(0, "pada", 0.25f));
         produtos.add(new Produto(0, "centeio", 0.25f));
+        produtos.add(new Produto(111, "vinho porto", 1.8f));
     }
 }

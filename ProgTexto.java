@@ -88,8 +88,10 @@ public class ProgTexto
                     String escolha1 = leitura.nextLine();
                     escolha = Integer.parseInt(escolha1);
                 } while (escolha > produto.size() || escolha < 0);
-                if(escolha != 0)
+                if(escolha != 0) {
+                    System.out.println("--- Conta " + numeroDaConta + " ---");
                     contas[numeroDaConta-1].get().add(produto.get(escolha - 1));
+                }
             }
             
             total = mostrarConta();
