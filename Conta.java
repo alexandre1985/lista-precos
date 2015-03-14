@@ -14,4 +14,6 @@ public class Conta
     public int getNumero() { return numero; }
     
     public ArrayList<Produto> get() { return produtos; }
+    
+    public void clear() { produtos.clear(); }
 }

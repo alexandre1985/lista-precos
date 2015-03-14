@@ -3,7 +3,7 @@ import java.util.*;
 public class ProgTexto
 {
     BaseDeDados base;
-    ArrayList<Produto> conta;
+    Conta[] contas;
     int numeroDaConta = 1;
     
     public ProgTexto()
@@ -12,9 +12,10 @@ public class ProgTexto
         Scanner leitura = new Scanner(System.in);
         float total = 0f;
         String nome = null;
-        ArrayList<ArrayList <Produto>> contas = new ArrayList<ArrayList <Produto>>();
-        conta = new ArrayList<Produto>();
-        contas.add(conta);
+        contas = new Conta[10];
+        for(int i=0; i < 10; i++) {
+            contas[i] = new Conta(i+1);
+        }
         
         do {
             System.out.print("Nome do produto: ");
@@ -22,14 +23,16 @@ public class ProgTexto
             
             if(nome.equals("0") || nome.equals("sair")) {
                 System.out.println("Conta limpa");
-                conta.clear();
+                contas[numeroDaConta-1].clear();
                 total = 0f;
                 continue;
             }
             
             if(isNumeric(nome)) {
-                int num = Integer.parseInt(nome);
-                
+                numeroDaConta = Integer.parseInt(nome);
+                System.out.println("--- Conta " + numeroDaConta + " ---");
+                mostrarConta();
+                continue;
             }
             
             if(!nome.equals("") && nome.charAt(0) == '/') {
@@ -39,12 +42,12 @@ public class ProgTexto
             }
             
             if(nome.equals("-")) {
-                int ultimo = conta.size()-1;
+                int ultimo = contas[numeroDaConta-1].get().size()-1;
                 if(ultimo == -1) {
                     System.out.println("Não há produtos na conta.");
                     continue;
                 }
-                conta.remove(ultimo);
+                contas[numeroDaConta-1].get().remove(ultimo);
                 total = mostrarConta();
                 continue;
             }
@@ -63,7 +66,7 @@ public class ProgTexto
                 System.out.println("NÃO HÁ ESSE PRODUTO!!!");           
             }
             else if (produto.size() == 1) {
-                conta.add(produto.get(0));
+                contas[numeroDaConta-1].get().add(produto.get(0));
             }
             else if(produto.size() > 1) {
                 int i=1;
@@ -78,7 +81,7 @@ public class ProgTexto
                     escolha = Integer.parseInt(escolha1);
                 } while (escolha > produto.size() || escolha < 0);
                 if(escolha != 0)
-                    conta.add(produto.get(escolha - 1));
+                    contas[numeroDaConta-1].get().add(produto.get(escolha - 1));
             }
             
             total = mostrarConta();
@@ -88,11 +91,11 @@ public class ProgTexto
     private float mostrarConta()
     {
         float total = 0f;
-        for(Produto pedido : conta) {
+        for(Produto pedido : contas[numeroDaConta-1].get()) {
             System.out.println(pedido.getNome() + "   " + pedido.getPreco());
         }
 
-        for(Produto pedido : conta) {
+        for(Produto pedido : contas[numeroDaConta-1].get()) {
             total += pedido.getPreco();
         }
         
