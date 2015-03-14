@@ -203,5 +203,7 @@ public class BaseDeDados
         produtos.add(new Produto(0, "pada", 0.25f));
         produtos.add(new Produto(0, "centeio", 0.25f));
         produtos.add(new Produto(111, "vinho porto", 1.8f));
+        produtos.add(new Produto(0, "bolos", 1f));
+        produtos.add(new Produto(13, "cafe buondi dolce gusto", 0.70f));
     }
 }

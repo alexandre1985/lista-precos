@@ -33,7 +33,6 @@ public class ProgTexto
             
             if(isNumeric(nome)) {
                 numeroDaConta = Integer.parseInt(nome);
-                System.out.println("--- Conta " + numeroDaConta + " ---");
                 mostrarConta();
                 continue;
             }
@@ -64,17 +63,18 @@ public class ProgTexto
                 System.out.print("Dinheiro recebido: ");
                 String recebido1 = leitura.nextLine();
                 float recebido = Float.parseFloat(recebido1);
-                System.out.println("Troco: " + (recebido - total));
+                System.out.println("Troco: " + arredondar(recebido - total));
                 continue;
             }
             ArrayList<Produto> produto = base.getNome(nome);
-            System.out.println("--- Conta " + numeroDaConta + " ---");
             
             if(produto.size() == 0) {
+                total = mostrarConta();
                 System.out.println("NÃO HÁ ESSE PRODUTO!!!");           
             }
             else if (produto.size() == 1) {
                 contas[numeroDaConta-1].get().add(produto.get(0));
+                total = mostrarConta();
             }
             else if(produto.size() > 1) {
                 int i=1;
@@ -89,18 +89,18 @@ public class ProgTexto
                     escolha = Integer.parseInt(escolha1);
                 } while (escolha > produto.size() || escolha < 0);
                 if(escolha != 0) {
-                    System.out.println("--- Conta " + numeroDaConta + " ---");
                     contas[numeroDaConta-1].get().add(produto.get(escolha - 1));
+                    total = mostrarConta();
                 }
             }
             
-            total = mostrarConta();
         } while(!nome.equals("sair"));
     }
     
     private float mostrarConta()
     {
         float total = 0f;
+        System.out.println("--- Conta " + numeroDaConta + " ---");
         for(Produto pedido : contas[numeroDaConta-1].get()) {
             System.out.println(pedido.getNome() + "   " + pedido.getPreco());
         }
@@ -117,6 +117,7 @@ public class ProgTexto
     private float mostrarCodigoConta()
     {
         float total = 0f;
+        System.out.println("--- Conta " + numeroDaConta + " ---");
         for(Produto pedido : contas[numeroDaConta-1].get()) {
             System.out.println(codigo(pedido.getNumero()) + " " + pedido.getNome() + " "
             + pedido.getPreco());
@@ -126,9 +127,13 @@ public class ProgTexto
             total += pedido.getPreco();
         }
         
-        total = (float) Math.round(total*100)/100;
-        System.out.println("\nTotal: " + total + "\n---------------");
+        System.out.println("\nTotal: " + arredondar(total) + "\n---------------");
         return total;
+    }
+    
+    private float arredondar(float numero)
+    {
+        return (float) Math.round(numero*100)/100;
     }
     
     private boolean isNumeric(String str)
