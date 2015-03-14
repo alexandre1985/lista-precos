@@ -1,0 +1,567 @@
+1
+cafe
+0.65
+
+2
+descafenado
+0.75
+
+3
+cafe longo
+0.7
+
+3
+abatanado
+0.7
+
+4
+pingo
+0.7
+
+5
+pingo descafenado
+0.75
+
+6
+cevada
+0.6
+
+7
+cevada dupla
+0.8
+
+8
+pingo cevada
+0.7
+
+9
+carioca cafe
+0.55
+
+10
+carioca limao
+0.55
+
+11
+meia leite
+0.9
+
+11
+meia leite cevada
+0.9
+
+12
+meia leite descafenado
+0.95
+
+140
+galao
+1
+
+13
+cafe descafenado dolce gusto
+0.7
+
+14
+cappuccino dolce gusto
+1.2
+
+15
+macchiato dolce gusto
+1.2
+
+16
+chococino dolce gusto
+1.2
+
+17
+cha diverso
+0.8
+
+18
+cha 2 chavenas
+1.4
+
+19
+cha com leite
+1
+
+20
+cha limao carioca
+0.7
+
+21
+cha verde
+1
+
+21
+cha gorreana
+1
+
+22
+leite copo
+0.7
+
+23
+leite chocolatado pacote
+0.8
+
+24
+ucal
+1.1
+
+25
+torrada pao forma
+1.1
+
+26
+meia torrada
+0.7
+
+27
+torrada sem manteiga
+0.9
+
+28
+meia torrada sem manteiga
+0.75
+
+29
+torrada bijou
+0.7
+
+29
+torrada bijou com mel
+0.7
+
+30
+torrada bijou sem manteiga
+0.6
+
+31
+torrada pao pada
+0.8
+
+31
+torrada pao centeio
+0.8
+
+32
+pao com manteiga
+0.6
+
+33
+pao
+0.2
+
+34
+pada com manteiga
+0.7
+
+34
+centeio com manteiga
+0.7
+
+35
+pada com doce
+1
+
+35
+centeio com doce
+1
+
+36
+bico de pato com manteiga
+0.7
+
+37
+bico de pato
+0.3
+
+38
+pao normal com queijo
+1.3
+
+38
+pao normal com fiambre
+1.3
+
+39
+pao normal com queijo e fiambre
+1.65
+
+40
+pada com queijo
+1.4
+
+40
+pada com fiambre
+1.4
+
+40
+centeio com queijo
+1.4
+
+40
+centeio com fiambre
+1.4
+
+41
+pada com queijo e fiambre
+1.7
+
+41
+centeio com queijo e fiambre
+1.7
+
+42
+bico de pato com queijo
+1.3
+
+42
+bico de pato com fiambre
+1.3
+
+43
+bico de pato com queijo e fiambre
+1.7
+
+44
+pao normal com presunto
+2.5
+
+45
+pada com presunto
+2.7
+
+45
+centeio com presunto
+2.7
+
+46
+pao normal com queijo brie
+1.4
+
+47
+pada com queijo brie
+1.5
+
+47
+centeio com queijo brie
+1.5
+
+48
+pao com pate
+2.5
+
+141
+sandes americana
+2.5
+
+49
+tosta queijo
+1.6
+
+49
+tosta fiambre
+1.6
+
+50
+tosta mista
+1.8
+
+51
+cachorro normal
+1.6
+
+52
+cachorro com queijo
+1.8
+
+52
+cachorro com fiambre
+1.8
+
+53
+cachorro com queijo e fiambre
+2.2
+
+54
+sopa pequena
+1.5
+
+55
+sopa grande
+1.8
+
+56
+croissant simples
+0.8
+
+57
+croissant com manteiga
+0.9
+
+60
+croissant com queijo
+1.5
+
+60
+croissant com fiambre
+1.5
+
+62
+croissant com queijo e fiambre
+1.8
+
+64
+croissant chocolate
+1.2
+
+63
+torrado
+0.1
+
+65
+lanche
+1.1
+
+66
+lanche misto
+1.2
+
+142
+lanche frango
+1.5
+
+67
+panike
+1
+
+67
+folhado misto
+1
+
+68
+bolo cenoura
+0.8
+
+68
+bolo arroz
+0.8
+
+68
+nata
+0.8
+
+69
+fatia bolo caseiro
+1
+
+70
+tarte
+1
+
+71
+rissol
+0.85
+
+72
+croquete
+0.85
+
+72
+bolinho bacalhau
+0.85
+
+73
+chamuca
+0.85
+
+74
+folhado frango
+1.2
+
+143
+pao com chourico
+1.5
+
+144
+pao leitao
+2
+
+75
+pastel chaves
+1.5
+
+76
+quiche
+1.3
+
+76
+pizza
+1.3
+
+77
+agua pedras salgadas
+1.1
+
+78
+agua pedras salgadas com rodela limao
+1.2
+
+79
+agua pedras salgadas com groselha
+1.2
+
+82
+frize
+1.2
+
+83
+agua 33cl
+0.7
+
+84
+agua 50cl
+0.8
+
+85
+agua 1.5l
+1
+
+86
+coca cola
+1.1
+
+87
+fanta
+1.1
+
+88
+sumol
+1.1
+
+89
+7up
+1.1
+
+90
+ice tea
+1.1
+
+91
+b!
+1.2
+
+92
+compal
+1.1
+
+94
+sumo laranja natural
+1.6
+
+95
+super bock
+1.1
+
+95
+cerveja
+1.1
+
+96
+mini
+0.8
+
+101
+panache
+1.5
+
+102
+tango
+1.5
+
+103
+sumo natural
+2
+
+112
+macieira
+1.5
+
+112
+aguardente
+1.5
+
+113
+croft
+1.5
+
+114
+meio croft
+0.8
+
+114
+meia aguardente
+0.8
+
+115
+amendoa amarga
+1.2
+
+116
+licor beirao
+1.2
+
+117
+whiskey novo
+2.8
+
+118
+whiskey velho
+3.5
+
+150
+kinder ovo
+1.5
+
+151
+kinder barra
+0.8
+
+152
+kit kat
+1.1
+
+152
+mars
+1.1
+
+152
+chocolate
+1.1
+
+154
+halls
+0.9
+
+155
+chiclet trident
+0.8
+
+156
+chiclet
+0.1
+
+0
+pao
+0.12
+
+0
+pada
+0.25
+
+0
+centeio
+0.25

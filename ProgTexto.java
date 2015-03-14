@@ -12,8 +12,8 @@ public class ProgTexto
         Scanner leitura = new Scanner(System.in);
         float total = 0f;
         String nome = null;
-        contas = new Conta[10];
-        for(int i=0; i < 10; i++) {
+        contas = new Conta[14];
+        for(int i=0; i < 14; i++) {
             contas[i] = new Conta(i+1);
         }
         
@@ -22,7 +22,10 @@ public class ProgTexto
             nome = leitura.nextLine();
             
             if(nome.equals("0") || nome.equals("sair")) {
-                System.out.println("Conta limpa");
+                if(nome.equals("0"))
+                    System.out.println("Conta " + numeroDaConta + " limpa");
+                else
+                    System.out.println("Fechei as contas todas");
                 contas[numeroDaConta-1].clear();
                 total = 0f;
                 continue;
@@ -38,6 +41,11 @@ public class ProgTexto
             if(!nome.equals("") && nome.charAt(0) == '/') {
                 int num = Integer.parseInt(nome.substring(1, nome.length()).trim());
                 System.out.println("Dá " + total/num + " cada.");
+                continue;
+            }
+            
+            if (nome.equals("num") || nome.equals("codigo") || nome.equals("cod")) {
+                total = mostrarCodigoConta();
                 continue;
             }
             
@@ -104,8 +112,37 @@ public class ProgTexto
         return total;
     }
     
+    private float mostrarCodigoConta()
+    {
+        float total = 0f;
+        for(Produto pedido : contas[numeroDaConta-1].get()) {
+            System.out.println(codigo(pedido.getNumero()) + " " + pedido.getNome() + " "
+            + pedido.getPreco());
+        }
+
+        for(Produto pedido : contas[numeroDaConta-1].get()) {
+            total += pedido.getPreco();
+        }
+        
+        total = (float) Math.round(total*100)/100;
+        System.out.println("\nTotal: " + total + "\n---------------");
+        return total;
+    }
+    
     private boolean isNumeric(String str)
     {
       return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+    
+    private String codigo(int num)
+    {
+        String resultado = Integer.toString(num);
+        int tamanho = resultado.length();
+        String append = "";
+        while(tamanho < 5 ) {
+            append += "0";
+            tamanho++;
+        }
+        return append + resultado;
     }
 }
