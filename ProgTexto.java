@@ -4,7 +4,7 @@ public class ProgTexto
 {
     BaseDeDados base;
     Conta[] contas;
-    int numeroDaConta = 1;
+    int numeroDaConta = 11;
     
     public ProgTexto()
     {
@@ -33,7 +33,7 @@ public class ProgTexto
             
             if(isNumeric(nome)) {
                 numeroDaConta = Integer.parseInt(nome);
-                mostrarConta();
+                total = mostrarConta();
                 continue;
             }
             
@@ -66,11 +66,22 @@ public class ProgTexto
                 System.out.println("Troco: " + arredondar(recebido - total));
                 continue;
             }
+            
+            if(nome.contains(">>") || nome.contains("->")) {
+                int num = Integer.parseInt(nome.substring(2, nome.length()).trim());
+                contas[num-1].clear();
+                for(Produto prod : contas[numeroDaConta-1].get())
+                    contas[num-1].get().add(prod);
+                contas[numeroDaConta-1].clear();
+                total = mostrarConta();
+                continue;
+            }
             ArrayList<Produto> produto = base.getNome(nome);
             
             if(produto.size() == 0) {
                 total = mostrarConta();
-                System.out.println("NÃO HÁ ESSE PRODUTO!!!");           
+                if(!nome.equals(""))
+                    System.out.println("NÃO HÁ ESSE PRODUTO!!!");           
             }
             else if (produto.size() == 1) {
                 contas[numeroDaConta-1].get().add(produto.get(0));
@@ -109,7 +120,7 @@ public class ProgTexto
             total += pedido.getPreco();
         }
         
-        total = (float) Math.round(total*100)/100;
+        total = arredondar(total);
         System.out.println("\nTotal: " + total + "\n---------------");
         return total;
     }
