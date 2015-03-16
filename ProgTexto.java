@@ -8,12 +8,13 @@ public class ProgTexto
     
     public ProgTexto()
     {
+        final int MAX_MESAS = 14;
         base = new BaseDeDados();
         Scanner leitura = new Scanner(System.in);
         float total = 0f;
         String nome = null;
-        contas = new Conta[14];
-        for(int i=0; i < 14; i++) {
+        contas = new Conta[MAX_MESAS];
+        for(int i=0; i < MAX_MESAS; i++) {
             contas[i] = new Conta(i+1);
         }
         
@@ -32,8 +33,13 @@ public class ProgTexto
             }
             
             if(isNumeric(nome)) {
-                numeroDaConta = Integer.parseInt(nome);
-                total = mostrarConta();
+                int num = Integer.parseInt(nome);
+                if(num < 0 || num > MAX_MESAS)
+                    System.out.println("A conta " + num + " não existe!");
+                else {
+                    numeroDaConta = num;
+                    total = mostrarConta();
+                }
                 continue;
             }
             
