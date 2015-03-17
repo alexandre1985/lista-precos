@@ -32,6 +32,11 @@ public class ProgTexto
                 continue;
             }
             
+            if(nome.equals("c") || nome.equals("clear") || nome.equals("limpa") || nome.equals("limpar")) {
+                limpar();
+                continue;
+            }
+            
             if(isNumeric(nome)) {
                 int num = Integer.parseInt(nome);
                 if(num < 0 || num > MAX_MESAS)
@@ -170,5 +175,12 @@ public class ProgTexto
             tamanho++;
         }
         return append + resultado;
+    }
+    
+    private void limpar()
+    {
+        for(int i=0; i < 51; i++) {
+            System.out.println();
+        }
     }
 }

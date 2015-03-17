@@ -11,4 +11,6 @@ comment4.params=str
 comment4.target=boolean\ isNumeric(java.lang.String)
 comment5.params=num
 comment5.target=java.lang.String\ codigo(int)
-numComments=6
+comment6.params=
+comment6.target=void\ limpar()
+numComments=7
