@@ -68,8 +68,10 @@ public class ProgTexto
             if(nome.equals("t")) {
                 System.out.print("Dinheiro recebido: ");
                 String recebido1 = leitura.nextLine();
-                float recebido = Float.parseFloat(recebido1);
-                System.out.println("Troco: " + arredondar(recebido - total));
+                if(isNumeric(recebido1)) {
+                    float recebido = Float.parseFloat(recebido1);
+                    System.out.println("Troco: " + arredondar(recebido - total));
+                }
                 continue;
             }
             
