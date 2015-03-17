@@ -63,6 +63,7 @@ public class BaseDeDados
         produtos.add(new Produto(1, "cafe", 0.65f));
         produtos.add(new Produto(2, "descafenado", 0.75f));
         produtos.add(new Produto(3, "cafe longo", 0.7f));
+        produtos.add(new Produto(0, "cafe pingado", 0.7f));
         produtos.add(new Produto(3, "abatanado", 0.7f));
         produtos.add(new Produto(4, "pingo", 0.7f));
         produtos.add(new Produto(5, "pingo descafenado", 0.75f));
@@ -140,7 +141,7 @@ public class BaseDeDados
         produtos.add(new Produto(60, "croissant com fiambre", 1.5f));
         produtos.add(new Produto(62, "croissant com queijo e fiambre", 1.8f));
         produtos.add(new Produto(64, "croissant chocolate", 1.2f));
-        produtos.add(new Produto(63, "torrado", 0.1f));
+        produtos.add(new Produto(0, "torrado", 0.1f));
         produtos.add(new Produto(65, "lanche", 1.1f));
         produtos.add(new Produto(66, "lanche misto", 1.2f));
         produtos.add(new Produto(142, "lanche frango", 1.5f));
@@ -199,11 +200,19 @@ public class BaseDeDados
         produtos.add(new Produto(154, "halls", 0.9f));
         produtos.add(new Produto(155, "chiclet trident", 0.8f));
         produtos.add(new Produto(156, "chiclet", 0.1f));
-        produtos.add(new Produto(0, "pao", 0.12f));
-        produtos.add(new Produto(0, "pada", 0.25f));
-        produtos.add(new Produto(0, "centeio", 0.25f));
+        produtos.add(new Produto(161, "pao", 0.12f));
+        produtos.add(new Produto(162, "pada", 0.25f));
+        produtos.add(new Produto(162, "centeio", 0.25f));
+        produtos.add(new Produto(162, "mistura", 0.25f));
         produtos.add(new Produto(111, "vinho porto", 1.8f));
         produtos.add(new Produto(0, "bolos", 1f));
         produtos.add(new Produto(13, "cafe buondi dolce gusto", 0.70f));
+        produtos.add(new Produto(107, "martini", 0.8f));
+        produtos.add(new Produto(108, "martini com cerveja", 1.6f));
+        produtos.add(new Produto(109, "favaios", 0.8f));
+        produtos.add(new Produto(110, "favaios com cerveja", 1.6f));
+        produtos.add(new Produto(157, "cafe com pau canela", 0.7f));
+        produtos.add(new Produto(158, "lanche mexicano", 1.5f));
+        produtos.add(new Produto(159, "salada mista", 1f));
     }
 }

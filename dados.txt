@@ -10,6 +10,10 @@ descafenado
 cafe longo
 0.7
 
+0
+cafe pingado
+0.7
+
 3
 abatanado
 0.7
@@ -318,7 +322,7 @@ croissant com queijo e fiambre
 croissant chocolate
 1.2
 
-63
+0
 torrado
 0.1
 
@@ -554,16 +558,20 @@ chiclet trident
 chiclet
 0.1
 
-0
+161
 pao
 0.12
 
-0
+162
 pada
 0.25
 
-0
+162
 centeio
+0.25
+
+162
+mistura
 0.25
 
 111
@@ -577,3 +585,33 @@ bolos
 13
 cafe buondi dolce gusto
 0.70
+
+107
+martini
+0.8
+
+108
+martini com cerveja
+1.6
+
+109
+favaios
+0.8
+
+110
+favaios com cerveja
+1.6
+
+157
+cafe com pau canela
+0.7
+
+158
+lanche mexicano
+1.5
+
+159
+salada mista
+1
+
+
