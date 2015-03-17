@@ -32,7 +32,7 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.equals("c") || nome.equals("clear") || nome.equals("limpa") || nome.equals("limpar")) {
+            if(nome.equals("l") || nome.equals("clear") || nome.equals("limpa") || nome.equals("limpar")) {
                 limpar();
                 continue;
             }
