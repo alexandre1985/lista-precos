@@ -198,7 +198,7 @@ public class BaseDeDados
         produtos.add(new Produto(152, "mars", 1.1f));
         produtos.add(new Produto(152, "chocolate", 1.1f));
         produtos.add(new Produto(154, "halls", 0.9f));
-        produtos.add(new Produto(155, "chiclet trident", 0.8f));
+        produtos.add(new Produto(155, "chiclet trident", 1f));
         produtos.add(new Produto(156, "chiclet", 0.1f));
         produtos.add(new Produto(161, "pao", 0.12f));
         produtos.add(new Produto(162, "pada", 0.25f));
@@ -214,5 +214,6 @@ public class BaseDeDados
         produtos.add(new Produto(157, "cafe com pau canela", 0.7f));
         produtos.add(new Produto(158, "lanche mexicano", 1.5f));
         produtos.add(new Produto(159, "salada mista", 1f));
+        produtos.add(new Produto(0, "mentos", 1.1f));
     }
 }
