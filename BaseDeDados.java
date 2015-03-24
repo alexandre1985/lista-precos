@@ -192,7 +192,7 @@ public class BaseDeDados
         produtos.add(new Produto(116, "licor beirao", 1.2f));
         produtos.add(new Produto(117, "whiskey novo", 2.8f));
         produtos.add(new Produto(118, "whiskey velho", 3.5f));
-        produtos.add(new Produto(150, "kinder ovo", 1.5f));
+        produtos.add(new Produto(150, "kinder ovo", 1.6f));
         produtos.add(new Produto(151, "kinder barra", 0.8f));
         produtos.add(new Produto(152, "kit kat", 1.1f));
         produtos.add(new Produto(152, "mars", 1.1f));
@@ -215,5 +215,6 @@ public class BaseDeDados
         produtos.add(new Produto(158, "lanche mexicano", 1.5f));
         produtos.add(new Produto(159, "salada mista", 1f));
         produtos.add(new Produto(0, "mentos", 1.1f));
+        produtos.add(new Produto(152, "ckit kat mini", 0.5f));
     }
 }
