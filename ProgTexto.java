@@ -106,12 +106,17 @@ public class ProgTexto
                     System.out.println(i + ". " + prod.getNome() + "   " + prod.getPreco());
                     i++;
                 }
-                int escolha;
+                int escolha=-1;
+                boolean eNumero=false;
                 do {
                     System.out.print("escolha: ");
                     String escolha1 = leitura.nextLine();
-                    escolha = Integer.parseInt(escolha1);
-                } while (escolha > produto.size() || escolha < 0);
+                    if(isNumeric(escolha1)) {
+                        escolha = Integer.parseInt(escolha1);
+                        eNumero = true;
+                    } else
+                        System.out.println("Escolha um numero ou digite 0 para sair");
+                } while (!eNumero || escolha > produto.size() || escolha < 0);
                 if(escolha != 0) {
                     contas[numeroDaConta-1].get().add(produto.get(escolha - 1));
                     total = mostrarConta();
