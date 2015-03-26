@@ -94,7 +94,7 @@ public class BaseDeDados
         produtos.add(new Produto(27, "torrada sem manteiga", 0.9f));
         produtos.add(new Produto(28, "meia torrada sem manteiga", 0.75f));
         produtos.add(new Produto(29, "torrada biju", 0.7f));
-        produtos.add(new Produto(29, "torrada biju com mel", 0.7f));
+        produtos.add(new Produto(29, "torrada biju centeio com mel", 0.8f));
         produtos.add(new Produto(30, "torrada biju sem manteiga", 0.6f));
         produtos.add(new Produto(31, "torrada pao pada", 0.8f));
         produtos.add(new Produto(31, "torrada pao centeio", 0.8f));
