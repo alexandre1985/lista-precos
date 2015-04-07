@@ -216,5 +216,6 @@ public class BaseDeDados
         produtos.add(new Produto(159, "salada mista", 1f));
         produtos.add(new Produto(0, "mentos", 1.1f));
         produtos.add(new Produto(152, "ckit kat mini", 0.5f));
+        produtos.add(new Produto(0, "red bull", 1.5f));
     }
 }
