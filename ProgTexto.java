@@ -48,8 +48,13 @@ public class ProgTexto
                 continue;
             }
             
-            if(!nome.equals("") && nome.charAt(0) == '/') {
-                int num = Integer.parseInt(nome.substring(1, nome.length()).trim());
+            if(!nome.equals("") && nome.charAt(0) == '/' && nome.length() > 1) {
+                int num=1;
+                try {
+                    num = Integer.parseInt(nome.substring(1, nome.length()).trim());
+                } catch(Exception e) {
+                    num = 1;
+                }
                 System.out.println("Dá " + total/num + " cada.");
                 continue;
             }
@@ -80,8 +85,17 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.contains(">>") || nome.contains("->")) {
-                int num = Integer.parseInt(nome.substring(2, nome.length()).trim());
+            if(nome.startsWith(">>") || nome.startsWith("->")) {
+                String str = nome.substring(2, nome.length()).trim();
+                if(!isNumeric(str)) {
+                    System.out.println("Escreva um número inteiro positivo.");
+                    continue;
+                }
+                int num = Integer.parseInt(str);
+                if(num > MAX_MESAS) {
+                    System.out.println("Escreva um numero entre 1 e " + MAX_MESAS);
+                    continue;
+                }
                 contas[num-1].clear();
                 for(Produto prod : contas[numeroDaConta-1].get())
                     contas[num-1].get().add(prod);
@@ -89,6 +103,26 @@ public class ProgTexto
                 total = mostrarConta();
                 continue;
             }
+            
+            if(nome.startsWith("+")) {
+                String str = nome.substring(1, nome.length()).trim();
+                if(!isNumeric(str)) {
+                    System.out.println("Escreva um número inteiro positivo.");
+                    continue;
+                }
+                int num = Integer.parseInt(str);
+                if(num > MAX_MESAS) {
+                    System.out.println("Escreva um numero entre 1 e " + MAX_MESAS);
+                    continue;
+                }
+                for(Produto prod : contas[num-1].get()) {
+                    contas[numeroDaConta-1].get().add(prod);
+                }
+                contas[num-1].clear();
+                total = mostrarConta();
+                continue;
+            }
+            
             ArrayList<Produto> produto = base.getNome(nome);
             
             if(produto.size() == 0) {
@@ -167,7 +201,7 @@ public class ProgTexto
     
     private boolean isNumeric(String str)
     {
-      return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+      return str.matches("\\d+");
     }
     
     private String codigo(int num)

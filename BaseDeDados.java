@@ -182,7 +182,7 @@ public class BaseDeDados
         produtos.add(new Produto(96, "mini", 0.8f));
         produtos.add(new Produto(101, "panache", 1.5f));
         produtos.add(new Produto(102, "tango", 1.5f));
-        produtos.add(new Produto(103, "sumo natural", 2f));
+        produtos.add(new Produto(165, "sumo natural", 2f));
         produtos.add(new Produto(112, "macieira", 1.5f));
         produtos.add(new Produto(112, "aguardente", 1.5f));
         produtos.add(new Produto(113, "croft", 1.5f));
@@ -216,6 +216,7 @@ public class BaseDeDados
         produtos.add(new Produto(159, "salada mista", 1f));
         produtos.add(new Produto(0, "mentos", 1.1f));
         produtos.add(new Produto(152, "ckit kat mini", 0.5f));
-        produtos.add(new Produto(0, "red bull", 1.5f));
+        produtos.add(new Produto(167, "red bull", 1.5f));
+        produtos.add(new Produto(166, "sumo laranja natural pequeno", 1.2f));
     }
 }
