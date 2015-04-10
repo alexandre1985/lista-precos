@@ -37,7 +37,7 @@ public class ProgTexto
                 continue;
             }
             
-            if(isNumeric(nome)) {
+            if(isInt(nome)) {
                 int num = Integer.parseInt(nome);
                 if(num < 0 || num > MAX_MESAS)
                     System.out.println("A conta " + num + " não existe!");
@@ -81,13 +81,15 @@ public class ProgTexto
                 if(isNumeric(recebido1)) {
                     float recebido = Float.parseFloat(recebido1);
                     System.out.println("Troco: " + arredondar(recebido - total));
+                } else {
+                    System.out.println("Escreva um número");
                 }
                 continue;
             }
             
             if(nome.startsWith(">>") || nome.startsWith("->")) {
                 String str = nome.substring(2, nome.length()).trim();
-                if(!isNumeric(str)) {
+                if(!isInt(str)) {
                     System.out.println("Escreva um número inteiro positivo.");
                     continue;
                 }
@@ -106,7 +108,7 @@ public class ProgTexto
             
             if(nome.startsWith("+")) {
                 String str = nome.substring(1, nome.length()).trim();
-                if(!isNumeric(str)) {
+                if(!isInt(str)) {
                     System.out.println("Escreva um número inteiro positivo.");
                     continue;
                 }
@@ -145,7 +147,7 @@ public class ProgTexto
                 do {
                     System.out.print("escolha: ");
                     String escolha1 = leitura.nextLine();
-                    if(isNumeric(escolha1)) {
+                    if(isInt(escolha1)) {
                         escolha = Integer.parseInt(escolha1);
                         eNumero = true;
                     } else
@@ -200,6 +202,11 @@ public class ProgTexto
     }
     
     private boolean isNumeric(String str)
+    {
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+    
+    private boolean isInt(String str)
     {
       return str.matches("\\d+");
     }
