@@ -146,7 +146,7 @@ public class BaseDeDados
         produtos.add(new Produto(66, "lanche misto", 1.2f));
         produtos.add(new Produto(142, "lanche frango", 1.5f));
         produtos.add(new Produto(67, "panike", 1f));
-        produtos.add(new Produto(67, "folhado misto", 1f));
+        produtos.add(new Produto(67, "folhado misto", 1.5f));
         produtos.add(new Produto(68, "bolo cenoura", 0.8f));
         produtos.add(new Produto(68, "bolo arroz", 0.8f));
         produtos.add(new Produto(68, "nata", 0.8f));
