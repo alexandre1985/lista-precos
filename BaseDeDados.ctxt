@@ -11,4 +11,6 @@ comment4.params=num
 comment4.target=Produto\ getNumero(int)
 comment5.params=
 comment5.target=void\ carregarProdutos()
-numComments=6
+comment6.params=
+comment6.target=boolean\ escreverEmFicheiro()
+numComments=7

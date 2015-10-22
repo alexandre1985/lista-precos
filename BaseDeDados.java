@@ -80,12 +80,11 @@ public class BaseDeDados
         produtos.add(new Produto(14, "cappuccino dolce gusto", 1.2f));
         produtos.add(new Produto(15, "macchiato dolce gusto", 1.2f));
         produtos.add(new Produto(16, "chococino dolce gusto", 1.2f));
-        produtos.add(new Produto(17, "cha diverso", 0.8f));
+        produtos.add(new Produto(17, "cha lipton", 0.8f));
         produtos.add(new Produto(18, "cha 2 chavenas", 1.4f));
         produtos.add(new Produto(19, "cha com leite", 1f));
         produtos.add(new Produto(20, "cha limao carioca", 0.7f));
-        produtos.add(new Produto(21, "cha verde", 1f));
-        produtos.add(new Produto(21, "cha gorreana", 1f));
+        produtos.add(new Produto(21, "cha outros", 1f));
         produtos.add(new Produto(22, "leite copo", 0.7f));
         produtos.add(new Produto(23, "leite chocolatado pacote", 0.8f));
         produtos.add(new Produto(24, "ucal", 1.1f));
@@ -218,5 +217,32 @@ public class BaseDeDados
         produtos.add(new Produto(152, "ckit kat mini", 0.5f));
         produtos.add(new Produto(167, "red bull", 1.5f));
         produtos.add(new Produto(166, "sumo laranja natural pequeno", 1.2f));
+        produtos.add(new Produto(168, "francesinha", 7f));
+        produtos.add(new Produto(169, "francesinha com ovo", 7.5f));
+        produtos.add(new Produto(170, "cachorro especial", 4.5f));
+        produtos.add(new Produto(171, "cachorro especial com ovo", 5f));
+    }
+    
+    public boolean escreverEmFicheiro() 
+    {
+        boolean sucess = false;
+        String filename = "lista_de_precos.txt";
+        try {
+            java.io.FileWriter writer = new java.io.FileWriter(filename);
+            for(Produto produto : produtos) {
+                writer.write(produto.getNumero()+ " ");
+                writer.write(produto.getNome());
+                writer.write(System.lineSeparator());
+                writer.write(String.valueOf(produto.getPreco()) + "f");
+                writer.write(System.lineSeparator());
+            }
+            writer.close();
+            sucess = true;
+        }
+        catch(java.io.IOException e) {
+            System.err.println("Houve um erro a escrever em " + filename);
+        }
+        return sucess;
+        
     }
 }
