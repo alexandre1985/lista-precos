@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 import java.text.Normalizer.Form;
 import java.text.Normalizer;
+import java.io.*;
+import java.util.Scanner;
 
 public class BaseDeDados
 {
     ArrayList<Produto> produtos;
+    String filename = "lista_de_precos.txt";
     
     public BaseDeDados()
     {
         produtos = new ArrayList<Produto>();
-        carregarProdutos();
+        carregarProdutosFicheiro();
     }
     
     public ArrayList<Produto> getNome(String nome)
@@ -56,6 +59,29 @@ public class BaseDeDados
                 return produto;
         }
         return null;
+    }
+    
+    private void carregarProdutosFicheiro()
+    {
+        try {
+            Scanner scanner = new Scanner(new File(filename));
+            scanner.useLocale(java.util.Locale.US);
+            while(scanner.hasNextLine()) {
+                String linha = scanner.nextLine();
+                Scanner tokenizer = new Scanner(linha);
+                int num = tokenizer.nextInt();
+                String nome = tokenizer.nextLine();
+                nome = nome.substring(1); // apagar o espaco que aparece antes do nome
+                tokenizer.close();
+                float preco = scanner.nextFloat();
+                scanner.nextLine(); // por causa do line separator
+                produtos.add(new Produto(num, nome, preco));
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("Não encontro o ficheiro: " + filename);
+        }
     }
         
     private void carregarProdutos()
@@ -226,14 +252,13 @@ public class BaseDeDados
     public boolean escreverEmFicheiro() 
     {
         boolean sucess = false;
-        String filename = "lista_de_precos.txt";
         try {
             java.io.FileWriter writer = new java.io.FileWriter(filename);
             for(Produto produto : produtos) {
                 writer.write(produto.getNumero()+ " ");
                 writer.write(produto.getNome());
                 writer.write(System.lineSeparator());
-                writer.write(String.valueOf(produto.getPreco()) + "f");
+                writer.write(String.valueOf(produto.getPreco()));
                 writer.write(System.lineSeparator());
             }
             writer.close();
