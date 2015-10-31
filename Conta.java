@@ -16,4 +16,6 @@ public class Conta
     public ArrayList<Produto> get() { return produtos; }
     
     public void clear() { produtos.clear(); }
+    
+    public boolean isEmpty() { return produtos.isEmpty(); }
 }

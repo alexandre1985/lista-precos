@@ -13,4 +13,6 @@ comment5.params=nome
 comment5.target=void\ setNome(java.lang.String)
 comment6.params=num
 comment6.target=void\ setNumero(int)
-numComments=7
+comment7.params=
+comment7.target=java.lang.String\ toString()
+numComments=8

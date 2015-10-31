@@ -23,4 +23,6 @@ public class Produto
     public void setNome(String nome) { this.nome = nome; }
     
     public void setNumero(int num) { this.num = num; }
+    
+    public String toString() { return nome + " " + preco; }
 }

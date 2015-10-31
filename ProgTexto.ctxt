@@ -15,4 +15,6 @@ comment6.params=num
 comment6.target=java.lang.String\ codigo(int)
 comment7.params=
 comment7.target=void\ limpar()
-numComments=8
+comment8.params=
+comment8.target=java.lang.String\ statusContas()
+numComments=9

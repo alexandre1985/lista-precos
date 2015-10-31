@@ -125,6 +125,11 @@ public class ProgTexto
                 continue;
             }
             
+            if(nome.equals("ver")) {
+                System.out.print(statusContas());
+                continue;
+            }
+            
             ArrayList<Produto> produto = base.getNome(nome);
             
             if(produto.size() == 0) {
@@ -228,5 +233,20 @@ public class ProgTexto
         for(int i=0; i < 51; i++) {
             System.out.println();
         }
+    }
+    
+    private String statusContas()
+    {
+        String resultado = "";
+        for(int i=0; i < contas.length; i++) {
+            if(!contas[i].isEmpty()) {
+                resultado += i + ": ";
+                for(Produto prod : contas[i].get()) {
+                    resultado += prod.getNome() + ", ";
+                }
+                resultado += "\n";
+            }
+        }
+        return resultado;
     }
 }
