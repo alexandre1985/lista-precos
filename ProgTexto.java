@@ -240,7 +240,7 @@ public class ProgTexto
         String resultado = "";
         for(int i=0; i < contas.length; i++) {
             if(!contas[i].isEmpty()) {
-                resultado += i + ": ";
+                resultado += i+1 + ": ";
                 for(Produto prod : contas[i].get()) {
                     resultado += prod.getNome() + ", ";
                 }
