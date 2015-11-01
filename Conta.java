@@ -19,7 +19,7 @@ public class Conta
     
     public boolean isEmpty() { return produtos.isEmpty(); }
     
-    public float getPreco()
+    public float getTotal()
     {
         float total = 0;
         for(Produto prod : produtos) {

@@ -175,7 +175,7 @@ public class ProgTexto
             System.out.println(pedido.getNome() + "   " + pedido.getPreco());
         }
 
-        total = contas[numeroDaConta-1].getPreco();
+        total = contas[numeroDaConta-1].getTotal();
         System.out.println("\nTotal: " + total + "\n---------------");
         return total;
     }
@@ -189,7 +189,7 @@ public class ProgTexto
             + pedido.getPreco());
         }
 
-        total = contas[numeroDaConta-1].getPreco();
+        total = contas[numeroDaConta-1].getTotal();
         System.out.println("\nTotal: " + total + "\n---------------");
         return total;
     }
@@ -228,7 +228,7 @@ public class ProgTexto
         String resultado = "";
         for(int i=0; i < contas.length; i++) {
             if(!contas[i].isEmpty()) {
-                resultado += i+1 + ": " + contas[i].getPreco() + " - ";
+                resultado += i+1 + ": " + contas[i].getTotal() + " - ";
                 for(Produto prod : contas[i].get()) {
                     resultado += prod.getNome() + ", ";
                 }
