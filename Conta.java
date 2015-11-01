@@ -18,4 +18,18 @@ public class Conta
     public void clear() { produtos.clear(); }
     
     public boolean isEmpty() { return produtos.isEmpty(); }
+    
+    public float getPreco()
+    {
+        float total = 0;
+        for(Produto prod : produtos) {
+            total += prod.getPreco();
+        }
+        return arredondar(total);
+    }
+    
+    private float arredondar(float numero)
+    {
+        return (float) Math.round(numero*100)/100;
+    }
 }

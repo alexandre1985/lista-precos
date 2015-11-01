@@ -80,7 +80,7 @@ public class ProgTexto
                 String recebido1 = leitura.nextLine();
                 if(isNumeric(recebido1)) {
                     float recebido = Float.parseFloat(recebido1);
-                    System.out.println("Troco: " + arredondar(recebido - total));
+                    System.out.println("Troco: " + (recebido - total));
                 } else {
                     System.out.println("Escreva um número");
                 }
@@ -175,11 +175,7 @@ public class ProgTexto
             System.out.println(pedido.getNome() + "   " + pedido.getPreco());
         }
 
-        for(Produto pedido : contas[numeroDaConta-1].get()) {
-            total += pedido.getPreco();
-        }
-        
-        total = arredondar(total);
+        total = contas[numeroDaConta-1].getPreco();
         System.out.println("\nTotal: " + total + "\n---------------");
         return total;
     }
@@ -193,17 +189,9 @@ public class ProgTexto
             + pedido.getPreco());
         }
 
-        for(Produto pedido : contas[numeroDaConta-1].get()) {
-            total += pedido.getPreco();
-        }
-        
-        System.out.println("\nTotal: " + arredondar(total) + "\n---------------");
+        total = contas[numeroDaConta-1].getPreco();
+        System.out.println("\nTotal: " + total + "\n---------------");
         return total;
-    }
-    
-    private float arredondar(float numero)
-    {
-        return (float) Math.round(numero*100)/100;
     }
     
     private boolean isNumeric(String str)
@@ -240,7 +228,7 @@ public class ProgTexto
         String resultado = "";
         for(int i=0; i < contas.length; i++) {
             if(!contas[i].isEmpty()) {
-                resultado += i+1 + ": ";
+                resultado += i+1 + ": " + contas[i].getPreco() + " - ";
                 for(Produto prod : contas[i].get()) {
                     resultado += prod.getNome() + ", ";
                 }
