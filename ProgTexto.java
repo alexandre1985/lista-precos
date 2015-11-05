@@ -80,7 +80,7 @@ public class ProgTexto
                 String recebido1 = leitura.nextLine();
                 if(isNumeric(recebido1)) {
                     float recebido = Float.parseFloat(recebido1);
-                    System.out.println("Troco: " + (recebido - total));
+                    System.out.println("Troco: " + arredondar(recebido - total));
                 } else {
                     System.out.println("Escreva um número");
                 }
@@ -221,6 +221,11 @@ public class ProgTexto
         for(int i=0; i < 51; i++) {
             System.out.println();
         }
+    }
+    
+    private float arredondar(float numero)
+    {
+        return (float) Math.round(numero*100)/100;
     }
     
     private String statusContas()
