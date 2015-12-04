@@ -134,7 +134,7 @@ public class ProgTexto
             if(comandos[0].equals("del")) {
                 for(int i= 1; i < comandos.length; i++) {
                     if(!isNumeric(comandos[i])) {
-                        System.out.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
+                        System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
                         continue Main;
                     }
                 }
@@ -142,12 +142,18 @@ public class ProgTexto
                 Integer[] temp = new Integer[comandos.length-1];
                 for(int i = 1; i < comandos.length; i++) {
                     temp[i-1] = Integer.parseInt(comandos[i]);
+                    if(temp[i-1] > contas[numeroDaConta-1].get().size() || temp[i-1] < 1) {
+                        System.err.println("Erro: só aceito argumentos entre 1 e " + 
+                        contas[numeroDaConta-1].get().size());
+                        continue Main;
+                    }
                 }
                 Arrays.sort(temp, Collections.reverseOrder());
                 for(int a : temp) {
-                    contas[numeroDaConta-1].get().remove(a);
+                    contas[numeroDaConta-1].get().remove(a-1);
                 }
-                
+                total = mostrarConta();
+                continue;
             }
             
             ArrayList<Produto> produto = base.getNome(nome);
@@ -190,7 +196,7 @@ public class ProgTexto
     private float mostrarConta()
     {
         float total = 0f;
-        System.out.println("--- Conta " + numeroDaConta + " ---");
+        System.out.println("\n--- Conta " + numeroDaConta + " ---");
         for(Produto pedido : contas[numeroDaConta-1].get()) {
             System.out.println(pedido.getNome() + "   " + pedido.getPreco());
         }
