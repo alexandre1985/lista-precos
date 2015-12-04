@@ -18,7 +18,7 @@ public class ProgTexto
             contas[i] = new Conta(i+1);
         }
         
-        do {
+        Main: do {
             System.out.print("Nome do produto: ");
             nome = leitura.nextLine();
             
@@ -128,6 +128,26 @@ public class ProgTexto
             if(nome.equals("ver")) {
                 System.out.print(statusContas());
                 continue;
+            }
+            
+            String[] comandos = nome.split(" ");
+            if(comandos[0].equals("del")) {
+                for(int i= 1; i < comandos.length; i++) {
+                    if(!isNumeric(comandos[i])) {
+                        System.out.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
+                        continue Main;
+                    }
+                }
+                
+                Integer[] temp = new Integer[comandos.length-1];
+                for(int i = 1; i < comandos.length; i++) {
+                    temp[i-1] = Integer.parseInt(comandos[i]);
+                }
+                Arrays.sort(temp, Collections.reverseOrder());
+                for(int a : temp) {
+                    contas[numeroDaConta-1].get().remove(a);
+                }
+                
             }
             
             ArrayList<Produto> produto = base.getNome(nome);
