@@ -2,13 +2,13 @@ import java.util.*;
 
 public class ProgTexto
 {
+    final int MAX_MESAS = 14;
     BaseDeDados base;
     Conta[] contas;
     int numeroDaConta = 11;
     
     public ProgTexto()
     {
-        final int MAX_MESAS = 14;
         base = new BaseDeDados();
         Scanner leitura = new Scanner(System.in);
         float total = 0f;
@@ -39,7 +39,7 @@ public class ProgTexto
             
             if(isInt(nome)) {
                 int num = Integer.parseInt(nome);
-                if(num < 0 || num > MAX_MESAS)
+                if(num < 1 || num > MAX_MESAS)
                     System.out.println("A conta " + num + " não existe!");
                 else {
                     numeroDaConta = num;
@@ -132,7 +132,7 @@ public class ProgTexto
             
             String[] comandos = nome.split(" ");
             if(comandos[0].equals("del")) {
-                for(int i= 1; i < comandos.length; i++) {
+                for(byte i= 1; i < comandos.length; i++) {
                     if(!isNumeric(comandos[i])) {
                         System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
                         continue Main;
@@ -140,7 +140,7 @@ public class ProgTexto
                 }
                 
                 Integer[] temp = new Integer[comandos.length-1];
-                for(int i = 1; i < comandos.length; i++) {
+                for(byte i = 1; i < comandos.length; i++) {
                     temp[i-1] = Integer.parseInt(comandos[i]);
                     if(temp[i-1] > contas[numeroDaConta-1].get().size() || temp[i-1] < 1) {
                         System.err.println("Erro: só aceito argumentos entre 1 e " + 
@@ -153,6 +153,13 @@ public class ProgTexto
                     contas[numeroDaConta-1].get().remove(a-1);
                 }
                 total = mostrarConta();
+                continue;
+            }
+            
+            if(comandos[0].equals("mv")) {
+                boolean sucesso = mover(comandos);
+                if(sucesso)
+                    total = mostrarConta();
                 continue;
             }
             
@@ -267,5 +274,51 @@ public class ProgTexto
             }
         }
         return resultado;
+    }
+    
+    private boolean mover(String[] comandos)
+    {
+        if(contas[numeroDaConta-1].isEmpty()) {
+            System.err.println("Erro: não posso executar " + comandos[0] + "\nA conta " 
+            + numeroDaConta + " está vazia");
+            return false;
+        }
+        for(byte i= 1; i < comandos.length; i++) {
+            if(!isNumeric(comandos[i])) {
+                System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
+                return false;
+            }
+        }
+        if(comandos.length <= 2) {
+            System.out.println("Comando: " + comandos[0] + " num_da_conta num_produto1 num_produto2 ...\n" + 
+            "Para mover num_produto1, num_produto2, etc. para a conta num_da_conta");
+            return false;
+        }
+        int paraAConta = Integer.parseInt(comandos[1]);
+        if(paraAConta > MAX_MESAS || paraAConta < 1) {
+            System.err.println("Erro: só aceito numeros da mesa entre 1 e " + MAX_MESAS); 
+            return false;
+        }
+      
+        Integer[] temp = new Integer[comandos.length-2];
+        for(byte i = 2; i < comandos.length; i++) {
+            temp[i-2] = Integer.parseInt(comandos[i]);
+            if(temp[i-2] > contas[numeroDaConta-1].get().size() || temp[i-2] < 1) {
+                System.err.println("Erro: só aceito numeros de produto entre 1 e " + 
+                contas[numeroDaConta-1].get().size());
+                return false;
+            }
+        }
+        if(!contas[paraAConta-1].isEmpty()) {
+            contas[paraAConta-1].get().add(new Produto(0, "0-0-0-0-0", 0));
+        }
+        
+        Arrays.sort(temp, Collections.reverseOrder());
+        for(int a : temp) {
+            Produto p = contas[numeroDaConta-1].get().get(a-1);
+            contas[paraAConta-1].get().add(p);
+            contas[numeroDaConta-1].get().remove(a-1);
+        }
+        return true;
     }
 }
