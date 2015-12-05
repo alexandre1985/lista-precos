@@ -58,7 +58,7 @@ public class ProgTexto
                 } catch(Exception e) {
                     num = 1;
                 }
-                System.out.println("Dá " + total/num + " cada.");
+                System.out.println("Dá " + arredondar(total/num) + " cada.");
                 continue;
             }
             
