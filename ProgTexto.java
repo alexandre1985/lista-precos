@@ -132,6 +132,11 @@ public class ProgTexto
             
             String[] comandos = nome.split(" ");
             if(comandos[0].equals("del")) {
+                if(contas[numeroDaConta-1].isEmpty()) {
+                    System.err.println("Erro: não posso executar " + comandos[0] + "\nPorque a conta " 
+                    + numeroDaConta + " está vazia");
+                    continue;
+                }
                 for(byte i= 1; i < comandos.length; i++) {
                     if(!isNumeric(comandos[i])) {
                         System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
@@ -160,6 +165,12 @@ public class ProgTexto
                 boolean sucesso = mover(comandos);
                 if(sucesso)
                     total = mostrarConta();
+                continue;
+            }
+            
+            if(comandos[0].equals("i") || comandos[0].equals("ins")) {
+                inserirManual(comandos);
+                total = mostrarConta();
                 continue;
             }
             
@@ -279,7 +290,7 @@ public class ProgTexto
     private boolean mover(String[] comandos)
     {
         if(contas[numeroDaConta-1].isEmpty()) {
-            System.err.println("Erro: não posso executar " + comandos[0] + "\nA conta " 
+            System.err.println("Erro: não posso executar " + comandos[0] + "\nPorque a conta " 
             + numeroDaConta + " está vazia");
             return false;
         }
@@ -320,5 +331,19 @@ public class ProgTexto
             contas[numeroDaConta-1].get().remove(a-1);
         }
         return true;
+    }
+    
+    private void inserirManual(String[] comandos)
+    {
+        for(byte i = 1; i < comandos.length; i++) {
+            if(!isNumeric(comandos[i])) {
+                System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
+                return;
+            }
+        }
+        for(byte i = 1; i < comandos.length; i++) {
+            float f = Float.parseFloat(comandos[i]);
+            contas[numeroDaConta-1].get().add(new Produto(0, "produto", f));
+        }
     }
 }
