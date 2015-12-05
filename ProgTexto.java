@@ -149,8 +149,9 @@ public class ProgTexto
             }
             
             if(comandos[0].equals("i") || comandos[0].equals("ins")) {
-                inserirManual(comandos);
-                total = mostrarConta();
+                boolean sucesso = inserirManual(comandos);
+                if(sucesso)
+                    total = mostrarConta();
                 continue;
             }
             
@@ -313,18 +314,19 @@ public class ProgTexto
         return true;
     }
     
-    private void inserirManual(String[] comandos)
+    private boolean inserirManual(String[] comandos)
     {
         for(byte i = 1; i < comandos.length; i++) {
             if(!isNumeric(comandos[i])) {
                 System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
-                return;
+                return false;
             }
         }
         for(byte i = 1; i < comandos.length; i++) {
             float f = Float.parseFloat(comandos[i]);
             contas[numeroDaConta-1].get().add(new Produto(0, "produto", f));
         }
+        return true;
     }
     
     private boolean apagarProdutos(String[] comandos)
