@@ -10,15 +10,18 @@ public class ProgTexto
     public ProgTexto()
     {
         base = new BaseDeDados();
-        Scanner leitura = new Scanner(System.in);
-        float total = 0f;
-        String nome = null;
         contas = new Conta[MAX_MESAS];
         for(int i=0; i < MAX_MESAS; i++) {
             contas[i] = new Conta(i+1);
         }
-        
-        Main: do {
+    }
+    
+    public void main()
+    {
+        Scanner leitura = new Scanner(System.in);
+        float total = 0f;
+        String nome = null;
+        do {
             System.out.print("Nome do produto: ");
             nome = leitura.nextLine();
             
@@ -132,32 +135,9 @@ public class ProgTexto
             
             String[] comandos = nome.split(" ");
             if(comandos[0].equals("del")) {
-                if(contas[numeroDaConta-1].isEmpty()) {
-                    System.err.println("Erro: não posso executar " + comandos[0] + "\nPorque a conta " 
-                    + numeroDaConta + " está vazia");
-                    continue;
-                }
-                for(byte i= 1; i < comandos.length; i++) {
-                    if(!isNumeric(comandos[i])) {
-                        System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
-                        continue Main;
-                    }
-                }
-                
-                Integer[] temp = new Integer[comandos.length-1];
-                for(byte i = 1; i < comandos.length; i++) {
-                    temp[i-1] = Integer.parseInt(comandos[i]);
-                    if(temp[i-1] > contas[numeroDaConta-1].get().size() || temp[i-1] < 1) {
-                        System.err.println("Erro: só aceito argumentos entre 1 e " + 
-                        contas[numeroDaConta-1].get().size());
-                        continue Main;
-                    }
-                }
-                Arrays.sort(temp, Collections.reverseOrder());
-                for(int a : temp) {
-                    contas[numeroDaConta-1].get().remove(a-1);
-                }
-                total = mostrarConta();
+                boolean sucesso = apagarProdutos(comandos);
+                if(sucesso)
+                    total = mostrarConta();
                 continue;
             }
             
@@ -345,5 +325,35 @@ public class ProgTexto
             float f = Float.parseFloat(comandos[i]);
             contas[numeroDaConta-1].get().add(new Produto(0, "produto", f));
         }
+    }
+    
+    private boolean apagarProdutos(String[] comandos)
+    {
+        if(contas[numeroDaConta-1].isEmpty()) {
+            System.err.println("Erro: não posso executar " + comandos[0] + "\nPorque a conta " 
+            + numeroDaConta + " está vazia");
+            return false;
+        }
+        for(byte i= 1; i < comandos.length; i++) {
+            if(!isNumeric(comandos[i])) {
+                System.err.println("Erro: " + comandos[0] + " só aceita numeros como argumentos.");
+                return false;
+            }
+        }
+        
+        Integer[] temp = new Integer[comandos.length-1];
+        for(byte i = 1; i < comandos.length; i++) {
+            temp[i-1] = Integer.parseInt(comandos[i]);
+            if(temp[i-1] > contas[numeroDaConta-1].get().size() || temp[i-1] < 1) {
+                System.err.println("Erro: só aceito argumentos entre 1 e " + 
+                contas[numeroDaConta-1].get().size());
+                return false;
+            }
+        }
+        Arrays.sort(temp, Collections.reverseOrder());
+        for(int a : temp) {
+            contas[numeroDaConta-1].get().remove(a-1);
+        }
+        return true;
     }
 }
