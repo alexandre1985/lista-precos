@@ -134,25 +134,27 @@ public class ProgTexto
             }
             
             String[] comandos = nome.split(" ");
-            if(comandos[0].equals("del")) {
-                boolean sucesso = apagarProdutos(comandos);
-                if(sucesso)
-                    total = mostrarConta();
-                continue;
-            }
-            
-            if(comandos[0].equals("mv")) {
-                boolean sucesso = mover(comandos);
-                if(sucesso)
-                    total = mostrarConta();
-                continue;
-            }
-            
-            if(comandos[0].equals("i") || comandos[0].equals("ins")) {
-                boolean sucesso = inserirManual(comandos);
-                if(sucesso)
-                    total = mostrarConta();
-                continue;
+            if(comandos.length != 0) {
+                if(comandos[0].equals("del")) {
+                    boolean sucesso = apagarProdutos(comandos);
+                    if(sucesso)
+                        total = mostrarConta();
+                    continue;
+                }
+                
+                if(comandos[0].equals("mv")) {
+                    boolean sucesso = mover(comandos);
+                    if(sucesso)
+                        total = mostrarConta();
+                    continue;
+                }
+                
+                if(comandos[0].equals("i") || comandos[0].equals("ins")) {
+                    boolean sucesso = inserirManual(comandos);
+                    if(sucesso)
+                        total = mostrarConta();
+                    continue;
+                }
             }
             
             ArrayList<Produto> produto = base.getNome(nome);
