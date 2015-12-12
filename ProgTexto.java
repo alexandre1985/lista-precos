@@ -48,6 +48,13 @@ public class ProgTexto
             }
             
             if(isInt(input)) {
+                //tenho que fazer isto porque se inserir um valor maior que Integer.MAX_VALUE
+                //o Integer.parseInt() ia dar um erro
+                String max = "" + MAX_MESAS;
+                if(input.length() > max.length()) {
+                    System.out.println("A conta " + input + " não existe!");
+                    continue;
+                }
                 int num = Integer.parseInt(input);
                 if(num < 1 || num > MAX_MESAS)
                     System.out.println("A conta " + num + " não existe!");
