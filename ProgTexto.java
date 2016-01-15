@@ -6,6 +6,7 @@ public class ProgTexto
     BaseDeDados base;
     Conta[] contas;
     int numeroDaConta = 11;
+    byte ultimaConta = 11;
     
     public ProgTexto()
     {
@@ -20,13 +21,13 @@ public class ProgTexto
     {
         Scanner leitura = new Scanner(System.in);
         float total = 0f;
-        String nome = null;
+        String input = null;
         do {
             System.out.print("Nome do produto: ");
-            nome = leitura.nextLine();
+            input = leitura.nextLine();
             
-            if(nome.equals("0") || nome.equals("sair")) {
-                if(nome.equals("0"))
+            if(input.equals("0") || input.equals("sair")) {
+                if(input.equals("0"))
                     System.out.println("Conta " + numeroDaConta + " limpa");
                 else
                     System.out.println("Fechei as contas todas");
@@ -35,26 +36,40 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.equals("l") || nome.equals("clear") || nome.equals("limpa") || nome.equals("limpar")) {
+            if(input.equals("l") || input.equals("clear") || input.equals("limpa") || input.equals("limpar")) {
                 limpar();
                 continue;
             }
             
-            if(isInt(nome)) {
-                int num = Integer.parseInt(nome);
+            if(input.equals("!")) {
+                numeroDaConta = ultimaConta;
+                total = mostrarConta();
+                continue;
+            }
+            
+            if(isInt(input)) {
+                //tenho que fazer isto porque se inserir um valor maior que Integer.MAX_VALUE
+                //o Integer.parseInt() ia dar um erro
+                String max = "" + MAX_MESAS;
+                if(input.length() > max.length()) {
+                    System.out.println("A conta " + input + " não existe!");
+                    continue;
+                }
+                int num = Integer.parseInt(input);
                 if(num < 1 || num > MAX_MESAS)
                     System.out.println("A conta " + num + " não existe!");
                 else {
+                    ultimaConta =(byte) numeroDaConta;
                     numeroDaConta = num;
                     total = mostrarConta();
                 }
                 continue;
             }
             
-            if(!nome.equals("") && nome.charAt(0) == '/' && nome.length() > 1) {
+            if(!input.equals("") && input.charAt(0) == '/' && input.length() > 1) {
                 int num=1;
                 try {
-                    num = Integer.parseInt(nome.substring(1, nome.length()).trim());
+                    num = Integer.parseInt(input.substring(1, input.length()).trim());
                 } catch(Exception e) {
                     num = 1;
                 }
@@ -62,12 +77,12 @@ public class ProgTexto
                 continue;
             }
             
-            if (nome.equals("num") || nome.equals("codigo") || nome.equals("cod")) {
+            if (input.equals("num") || input.equals("codigo") || input.equals("cod")) {
                 total = mostrarCodigoConta();
                 continue;
             }
             
-            if(nome.equals("-")) {
+            if(input.equals("-")) {
                 int ultimo = contas[numeroDaConta-1].get().size()-1;
                 if(ultimo == -1) {
                     System.out.println("Não há produtos na conta.");
@@ -78,7 +93,7 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.equals("t")) {
+            if(input.equals("t")) {
                 System.out.print("Dinheiro recebido: ");
                 String recebido1 = leitura.nextLine();
                 if(isNumeric(recebido1)) {
@@ -90,8 +105,8 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.startsWith(">>") || nome.startsWith("->")) {
-                String str = nome.substring(2, nome.length()).trim();
+            if(input.startsWith(">>") || input.startsWith("->")) {
+                String str = input.substring(2, input.length()).trim();
                 if(!isInt(str)) {
                     System.out.println("Escreva um número inteiro positivo.");
                     continue;
@@ -109,8 +124,8 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.startsWith("+")) {
-                String str = nome.substring(1, nome.length()).trim();
+            if(input.startsWith("+")) {
+                String str = input.substring(1, input.length()).trim();
                 if(!isInt(str)) {
                     System.out.println("Escreva um número inteiro positivo.");
                     continue;
@@ -128,12 +143,12 @@ public class ProgTexto
                 continue;
             }
             
-            if(nome.equals("ver")) {
+            if(input.equals("ver")) {
                 System.out.print(statusContas());
                 continue;
             }
             
-            String[] comandos = nome.split(" ");
+            String[] comandos = input.split(" ");
             if(comandos.length != 0) {
                 if(comandos[0].equals("del")) {
                     boolean sucesso = apagarProdutos(comandos);
@@ -157,11 +172,11 @@ public class ProgTexto
                 }
             }
             
-            ArrayList<Produto> produto = base.getNome(nome);
+            ArrayList<Produto> produto = base.getNome(input);
             
             if(produto.size() == 0) {
                 total = mostrarConta();
-                if(!nome.equals(""))
+                if(!input.equals(""))
                     System.out.println("NÃO HÁ ESSE PRODUTO!!!");           
             }
             else if (produto.size() == 1) {
@@ -191,7 +206,7 @@ public class ProgTexto
                 }
             }
             
-        } while(!nome.equals("sair"));
+        } while(!input.equals("sair"));
     }
     
     private float mostrarConta()
