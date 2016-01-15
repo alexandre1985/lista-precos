@@ -261,8 +261,9 @@ public class ProgTexto
         for(int i=0; i < contas.length; i++) {
             if(!contas[i].isEmpty()) {
                 resultado += i+1 + ": " + contas[i].getTotal() + " - ";
-                for(Produto prod : contas[i].get()) {
-                    resultado += prod.getNome() + ", ";
+                for(short j=0; j < contas[i].get().size(); j++) {
+                    Produto prod = contas[i].get().get(j);
+                    resultado += (j == 0) ? prod.getNome() : ", " + prod.getNome();
                 }
                 resultado += "\n";
             }
